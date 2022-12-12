@@ -3,6 +3,7 @@ package com.example.mediumrair.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.mediumrair.API.ApiInterface
@@ -29,10 +30,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun listener() {
-        val email: String = viewBind.loginInputTextEmail.toString()
-        val password: String = viewBind.loginInputTextPassword.toString()
+        Log.d("Listener", "hai")
+        val email: String = viewBind.loginInputLayoutEmail.editText?.text.toString()
+        val password: String = viewBind.loginInputLayoutPassword.editText?.text.toString()
 
         viewBind.loginBtnLogin.setOnClickListener {
+            Log.d("Email", email)
+            Log.d("Password", password)
             login(email, password)
         }
         viewBind.loginBtnBack.setOnClickListener {
@@ -42,9 +46,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(email: String, password: String){
+        Log.d("Email Login", email)
+        Log.d("Password Login", password)
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
         val signInInfo = Login(email, password)
-        retIn.signin(signInInfo).enqueue(object : Callback<ResponseBody> {
+        retIn.login(signInInfo).enqueue(object : Callback<ResponseBody> {
+
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Toast.makeText(
                     this@LoginActivity,
@@ -53,8 +60,10 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
             }
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                Toast.makeText(this@LoginActivity, response.code(), Toast.LENGTH_SHORT).show()
                 if (response.code() == 200) {
-                    Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                    startActivity(intent)
                 } else {
                     Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()
                 }

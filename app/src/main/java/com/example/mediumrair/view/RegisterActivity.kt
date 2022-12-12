@@ -34,14 +34,9 @@ class RegisterActivity : AppCompatActivity() {
         val password: String = viewBind.registerInputTextPassword.toString()
         var repeat: String = viewBind.registerInputTextRepeat.toString()
 
-        if (password == repeat) {
             viewBind.registerBtnRegister.setOnClickListener {
                 signup(name, email, password)
             }
-        } else {
-            Toast.makeText(this@RegisterActivity, "Passwords do not match!", Toast.LENGTH_SHORT)
-                .show()
-        }
         viewBind.registerBtnBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -62,9 +57,9 @@ class RegisterActivity : AppCompatActivity() {
                 ).show()
             }
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if (response.code() == 201) {
-                    Toast.makeText(this@RegisterActivity, "Registration success!", Toast.LENGTH_SHORT)
-                        .show()
+                if (response.code() == 200) {
+                    val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+                    startActivity(intent)
                 }
                 else{
                     Toast.makeText(this@RegisterActivity, "Registration failed!", Toast.LENGTH_SHORT)

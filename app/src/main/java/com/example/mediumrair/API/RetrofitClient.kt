@@ -13,8 +13,8 @@ import retrofit2.http.POST
 
 interface ApiInterface {
     @Headers("Content-Type:application/json")
-    @POST("auth_tokens")
-    fun signin(@Body info: Login): retrofit2.Call<ResponseBody>
+    @POST("auth/login")
+    fun login(@Body info: Login): retrofit2.Call<ResponseBody>
 
     @Headers("Content-Type:application/json")
     @POST("users")
@@ -24,7 +24,7 @@ interface ApiInterface {
 }
 class RetrofitInstance {
     companion object {
-        val BASE_URL: String = "YOUR_URL_HERE"
+        val BASE_URL: String = "http://127.0.0.1:8080/"
 
         val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY
