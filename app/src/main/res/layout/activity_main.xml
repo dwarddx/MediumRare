@@ -4,15 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#9CEAEF"
+    tools:context=".view.MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/mainImageLogo"
+        android:layout_width="213dp"
+        android:layout_height="187dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/medium_r_air_only"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/mainBtnLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Login"
+        android:textColor="#3DCCC7"
+        app:layout_constraintEnd_toEndOf="@+id/mainImageLogo"
+        app:layout_constraintStart_toStartOf="@+id/mainImageLogo"
+        app:layout_constraintTop_toBottomOf="@+id/mainImageLogo" />
+
+    <Button
+        android:id="@+id/mainBtnRegister"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Register"
+        android:textColor="#3DCCC7"
+        app:layout_constraintEnd_toEndOf="@+id/mainBtnLogin"
+        app:layout_constraintStart_toStartOf="@+id/mainBtnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/mainBtnLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

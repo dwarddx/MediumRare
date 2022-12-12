@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MediumRair</string>
+    <string name="loginHintEmail">Masukkan Email</string>
+    <string name="loginHintPassword">Masukkan Password</string>
+    <string name="registerHintName">Masukkan Nama</string>
+    <string name="registerHintEmail">Masukkan Email</string>
+    <string name="registerHintPassword">Masukkan Password</string>
+    <string name="registerHintRepeat">Masukkan Repeat</string>
+    <string name="nulldata">-</string>
 </resources>
