@@ -35,8 +35,6 @@ class LoginActivity : AppCompatActivity() {
         val password: String = viewBind.loginInputLayoutPassword.editText?.text.toString()
 
         viewBind.loginBtnLogin.setOnClickListener {
-            Log.d("Email", email)
-            Log.d("Password", password)
             login(email, password)
         }
         viewBind.loginBtnBack.setOnClickListener {
@@ -46,8 +44,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(email: String, password: String){
-        Log.d("Email Login", email)
-        Log.d("Password Login", password)
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
         val signInInfo = Login(email, password)
         retIn.login(signInInfo).enqueue(object : Callback<ResponseBody> {
