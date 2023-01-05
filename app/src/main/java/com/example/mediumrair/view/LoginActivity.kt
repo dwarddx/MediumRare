@@ -35,7 +35,9 @@ class LoginActivity : AppCompatActivity() {
         val password: String = viewBind.loginInputLayoutPassword.editText?.text.toString()
 
         viewBind.loginBtnLogin.setOnClickListener {
-            login(email, password)
+//            login(email, password)
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
         viewBind.loginBtnBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
